@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<calendar>
+  <country name="Bulgaria">
+    <date value="*/1/1" type="national" name="Нова Година"/>
+    <date value="*/3/3" type="national" name="Освобождение на България от Османско иго"/>
+    <date value="*/5/1" type="national" name="Ден на труда"/>
+    <date value="*/5/6" type="national" name="Ден на храбростта и Българската армия"/>
+    <date value="*/5/6" type="religious" name="Гергьовден"/>
+    <date value="*/5/24" type="national" name="Ден на българската просвета и култура и на славянската писменост"/>
+    <date value="*/9/6" type="national" name="Ден на Съединението на България"/>
+    <date value="*/9/22" type="national" name="Ден на Независимостта на България"/>
+    <date value="*/10/1" type="national" name="Ден на народните будители"/>
+    <date value="*/12/24" type="national" name="Бъдни вечер"/>
+    <date value="*/12/25" type="national" name="Рождество Христово, Коледа"/>
+    <date value="*/12/26" type="national" name="Рождество Христово, Коледа"/>
+    <date value="*/1/1" type="religious" name="Васильовден"/>
+    <date value="*/1/6" type="religious" name="Св. Йоан Кръстител (Ивановден)"/>
+    <date value="*/1/7" type="religious" name="Богоявление (Йордановден)"/>
+    <date value="*/1/17" type="religious" name="Антоновден"/>
+    <date value="*/1/18" type="religious" name="Атанасовден"/>
+    <date value="*/2/1" type="religious" name="Трифон Зарезан (стар ст.)"/>
+    <date value="*/2/2" type="religious" name="Сретение Господне"/>
+    <date value="*/2/3" type="religious" name="Св. Симеон"/>
+    <date value="*/2/14" type="religious" name="Св. Валентин"/>
+    <date value="*/2/14" type="religious" name="Трифон Зарезан"/>
+    <date value="*/3/25" type="religious" name="Благовещение"/>
+    <date value="*/5/2" type="religious" name="Св. цар Борис"/>
+    <date value="*/5/11" type="religious" name="Св. Св.Кирил и Методий"/>
+    <date value="*/6/11" type="religious" name="Св.Богородица"/>
+    <date value="*/6/24" type="religious" name="Еньовден"/>
+    <date value="*/6/29" type="religious" name="Петровден"/>
+    <date value="*/7/27" type="religious" name="Св. Седмочисленици"/>
+    <date value="*/7/20" type="religious" name="Илинден"/>
+    <date value="*/9/8" type="religious" name="Рождество Богородично (Малка Богородица)"/>
+    <date value="*/9/14" type="religious" name="Кръстовден"/>
+    <date value="*/10/14" type="religious" name="Петковден"/>
+    <date value="*/10/26" type="religious" name="Димитровден"/>
+    <date value="*/11/8" type="religious" name="Архангеловден"/>
+    <date value="*/11/21" type="religious" name="Въведение Богородично"/>
+    <date value="*/11/30" type="religious" name="Андреевден"/>
+    <date value="*/12/4" type="religious" name="Св. Варвара"/>
+    <date value="*/12/5" type="religious" name="Св. Сава"/>
+    <date value="*/12/6" type="religious" name="Никулден"/>
+    <date value="*/12/20" type="religious" name="Игнажден"/>
+    <date value="*/12/27" type="religious" name="Стефановден"/>
+    <date value="2010/4/4" type="religious" name="Великден"/>
+    <date value="2011/4/24" type="religious" name="Великден"/>
+    <date value="2012/4/15" type="religious" name="Великден"/>
+    <date value="2013/5/5" type="religious" name="Великден"/>
+    <date value="2014/4/20" type="religious" name="Великден"/>
+    <date value="2015/4/12" type="religious" name="Великден"/>
+    <date value="2016/5/1" type="religious" name="Великден"/>
+    <date value="2017/4/16" type="religious" name="Великден"/>
+    <date value="2018/4/8" type="religious" name="Великден"/>
+    <date value="2019/4/28" type="religious" name="Великден"/>
+    <date value="2020/4/19" type="religious" name="Великден"/>
+    <date value="2010/4/4" type="religious" offset="-7" name="Цветница"/>
+    <date value="2011/4/24" type="religious" offset="-7" name="Цветница"/>
+    <date value="2012/4/15" type="religious" offset="-7" name="Цветница"/>
+    <date value="2013/5/5" type="religious" offset="-7" name="Цветница"/>
+    <date value="2014/4/20" type="religious" offset="-7" name="Цветница"/>
+    <date value="2015/4/12" type="religious" offset="-7" name="Цветница"/>
+    <date value="2016/5/1" type="religious" offset="-7" name="Цветница"/>
+    <date value="2017/4/16" type="religious" offset="-7" name="Цветница"/>
+    <date value="2018/4/8" type="religious" offset="-7" name="Цветница"/>
+    <date value="2019/4/28" type="religious" offset="-7" name="Цветница"/>
+    <date value="2020/4/19" type="religious" offset="-7" name="Цветница"/>
+    <date value="2010/5/13" type="religious" name="Възнесение господне"/>
+    <date value="2011/6/2" type="religious" name="Възнесение господне"/>
+    <date value="2012/5/24" type="religious" name="Възнесение господне"/>
+  </country> 
+    <country name="MyTest">
+    <date value="*/1/1" type="national" name="New Year's Day"/>
+    <date value="*/2/2" type="secular" name="Groundhog Day"/>
+      </country> 
+      
+          <country name="MyTest2">
+    <date value="*/1/1" type="national" name="New Year's Day"/>
+    <date value="*/2/2" type="secular" name="Groundhog Day"/>
+      </country> 
+  <country name="Canada">
+    <date value="*/1/1" type="national" name="New Year's Day"/>
+    <date value="*/2/2" type="secular" name="Groundhog Day"/>
+    <date value="*/2/14" type="secular" name="Valentine's Day"/>
+    <date value="*/2/15" type="secular" name="Flag Day"/>
+    <date value="*/3/17" type="secular" name="St. Patrick's Day"/>
+    <date value="*/4/1" type="secular" name="April Fool's Day"/>
+    <date value="*/1/sun/apr" type="informational" name="Daylight Savings begins"/>
+    <date value="1999/2/17" type="religious" name="Ash Wednesday"/>
+    <date value="1999/2/17" type="religious" name="Ash Wednesday"/>
+    <date value="2000/3/8" type="religious" name="Ash Wednesday"/>
+    <date value="2001/2/28" type="religious" name="Ash Wednesday"/>
+    <date value="2002/2/13" type="religious" name="Ash Wednesday"/>
+    <date value="2003/3/5" type="religious" name="Ash Wednesday"/>
+    <date value="2004/2/25" type="religious" name="Ash Wednesday"/>
+    <date value="2005/2/9" type="religious" name="Ash Wednesday"/>
+    <date value="2006/3/1" type="religious" name="Ash Wednesday"/>
+    <date value="2007/2/21" type="religious" name="Ash Wednesday"/>
+    <date value="2008/2/6" type="religious" name="Ash Wednesday"/>
+    <date value="2009/2/25" type="religious" name="Ash Wednesday"/>
+    <date value="2010/2/17" type="religious" name="Ash Wednesday"/>
+    <date value="2011/3/9" type="religious" name="Ash Wednesday"/>
+    <date value="2012/2/22" type="religious" name="Ash Wednesday"/>
+    <date value="2013/2/13" type="religious" name="Ash Wednesday"/>
+    <date value="2014/3/5" type="religious" name="Ash Wednesday"/>
+    <date value="2015/2/18" type="religious" name="Ash Wednesday"/>
+    <date value="2016/2/10" type="religious" name="Ash Wednesday"/>
+    <date value="2017/3/1" type="religious" name="Ash Wednesday"/>
+    <date value="2018/2/14" type="religious" name="Ash Wednesday"/>
+    <date value="2019/3/6" type="religious" name="Ash Wednesday"/>
+    <date value="> easter(y)" type="religious" name="Easter"/>
+    <date value="> passover(y)" type="religious" name="Passover"/>
+    <date value="*/4/22" type="secular" name="Earth Day"/>
+    <date value="*/2/sun/may" type="secular" name="Mother's Day"/>
+    <date value="*/5/24" type="national" offset="-mon" name="Victoria Day"/>
+    <date value="*/3/sun/jun" type="secular" name="Father's Day"/>
+    <date value="*/6/24" type="national" name="St-Jean Baptiste (QC)"/>
+    <date value="*/7/1" type="national" name="Canada Day"/>
+    <date value="*/1/mon/aug" type="national" name="Civic Holiday"/>
+    <date value="*/1/mon/sep" type="national" name="Labour Day"/>
+    <date value="*/2/sun/sep" type="secular" offset="6" name="Grandparent's Day"/>
+    <date value="*/2/mon/oct" type="national" name="Thanksgiving"/>
+    <date value="*/-1/sun/oct" type="informational" name="Daylight Savings ends"/>
+    <date value="> passover(y)" type="religious" offset="172" name="Yom Kippur"/>
+    <date value="2006/9/24" type="religious" name="Ramadan begins"/>
+    <date value="2007/9/13" type="religious" name="Ramadan begins"/>
+    <date value="2008/9/2" type="religious" name="Ramadan begins"/>
+    <date value="*/10/31" type="secular" name="Halloween"/>
+    <date value="*/11/11" type="national" name="Rememberance Day"/>
+    <date value="> hanuka(y)" type="religious" name="Hanukkah begins"/>
+    <date value="*/12/25" type="national" name="Christmas"/>
+    <date value="*/12/26" type="national" name="Boxing Day"/>
+  </country>
+  <country name="Czech Republic">
+    <date value="*/1/1" type="national" name="Nový rok"/>
+    <date value="*/1/1" type="national" name="Den obnovy samostatného českého státu"/>
+    <date value="> easter(y)" type="religious" name="Velikonoce"/>
+    <date value="*/5/1" type="national" name="Svátek práce"/>
+    <date value="*/5/8" type="national" name="Den osvobození od fašismu"/>
+    <date value="*/7/5" type="national" name="Den slovanských věrozvěstů Cyrila a Metoděje"/>
+    <date value="*/7/6" type="national" name="Den upálení mistra Jana Husa"/>
+    <date value="*/9/28" type="national" name="Den české státnosti"/>
+    <date value="*/10/28" type="national" name="Den vzniku samostatného československého státu"/>
+    <date value="*/11/17" type="national" name="Den boje za svobodu a demokracii"/>
+    <date value="*/12/24" type="religious" name="Štědrý den"/>
+    <date value="*/12/25" type="national" name="1. svátek vánoční"/>
+    <date value="*/12/26" type="national" name="2. svátek vánoční"/>
+  </country>
+  <country name="Chile">
+    <date value="*/1/1" type="national" name="Año nuevo"/>
+    <date value="2007/4/6" type="religious" name="Viernes Santo"/>
+    <date value="2008/3/21" type="religious" name="Viernes Santo"/>
+    <date value="2009/4/10" type="religious" name="Viernes Santo"/>
+    <date value="2010/4/2" type="religious" name="Viernes Santo"/>
+    <date value="2011/4/22" type="religious" name="Viernes Santo"/>
+    <date value="2012/4/6" type="religious" name="Viernes Santo"/>
+    <date value="2013/3/29" type="religious" name="Viernes Santo"/>
+    <date value="2014/4/18" type="religious" name="Viernes Santo"/>
+    <date value="2015/4/3" type="religious" name="Viernes Santo"/>
+    <date value="*/5/1" type="national" name="Día del Trabajador"/>
+    <date value="*/5/21" type="national" name="Día de las Glorias Navales"/>
+    <date value="*/6/29" type="religious" name="San Pedro y San Pablo"/>
+    <date value="*/7/16" type="religious" name="Día de la Virgen del Carmen"/>
+    <date value="*/8/15" type="religious" name="Asunción de la Virgen"/>
+    <date value="*/9/18" type="national" name="Fiestas Patrias"/>
+    <date value="*/9/19" type="national" name="Glorias del Ejército"/>
+    <date value="*/10/12" type="national" name="Día de la Raza"/>
+    <date value="*/11/1" type="religious" name="Todos los Santos"/>
+    <date value="*/12/8" type="religious" name="Inmaculada Concepción"/>
+    <date value="*/12/25" type="national" name="Navidad"/> 
+  </country>
+  <country name="China">
+    <date value="2006/1/29" type="national" name="Chinese New Year"/>
+  </country>
+  <country name="Croatia">
+    <date value="*/1/1" type="national" name="Nova godina"/>
+    <date value="*/1/6" type="national" name="Sveta tri kralja"/>  
+    <date value="> easter(y)" type="national" name="Uskrs"/>
+    <date value="> easter(y)" type="national" offset="1" name="Uskršnji ponedjeljak"/>
+    <date value="*/5/1" type="national" name="Dan rada"/>
+    <date value="> easter(y)" type="national" offset="60" name="Tijelovo"/>
+    <date value="*/6/22" type="national" name="Dan antifašističke borbe"/>
+    <date value="*/6/25" type="national" name="Dan državnosti"/>
+    <date value="*/8/5" type="national" name="Dan domovinske zahvalnosti"/>
+    <date value="*/8/15" type="national" name="Velika Gospa"/>
+    <date value="*/10/8" type="national" name="Dan neovisnosti"/>
+    <date value="*/11/1" type="national" name="Svi sveti"/>
+    <date value="*/12/25" type="national" name="Božić"/>
+    <date value="*/12/26" type="national" name="Sveti Stjepan"/>
+  </country>
+  <country name="England">
+    <date value="*/1/1" type="national" name="New Year's Day"/>
+    <date value="*/1/1" type="national" offset="+1" name="Bank Holiday" if="dow(y, m, d) == 7"/>
+    <date value="*/1/1" type="national" offset="+2" name="Bank Holiday" if="dow(y, m, d) == 6"/>
+    <date value="> easter(y)" type="national" offset="-2" name="Good Friday"/>
+    <date value="> easter(y)" type="national" offset="+1" name="Easter Monday"/>
+    <date value="*/1/mon/may" type="national" name="May Bank Holiday"/>
+    <date value="*/-1/mon/may" type="national" name="Spring Bank Holiday" if="y != 2012"/>
+    <date value="2012/6/4" type="national" name="Spring Bank Holiday"/>
+    <date value="2012/6/5" type="national" name="Diamond Jubilee"/>
+    <date value="*/-1/mon/aug" type="national" name="Summer Bank Holiday"/>
+    <date value="*/dec/25" type="national" name="Christmas Day"/>
+    <date value="*/dec/26" type="national" name="Boxing Day"/>
+    <date value="*/dec/25" type="national" offset="+2" name="Bank Holiday" if="dow(y, m, d) > 5"/>
+    <date value="*/dec/26" type="national" offset="+2" name="Bank Holiday" if="dow(y, m, d) > 5"/>
+    <date value="*/-1/sun/mar" type="informational" name="BST starts"/>
+    <date value="*/-1/sun/oct" type="informational" name="BST ends"/>
+    <date value="*/2/14" type="secular" name="Valentine's Day"/>
+    <date value="> easter(y)" type="religious" offset="-47" name="Shrove Tuesday"/>
+    <date value="> easter(y)" type="religious" offset="-46" name="Ash Wednesday"/>
+    <date value="> easter(y)" type="religious" name="Easter Sunday"/>
+    <date value="*/4/1" type="secular" name="April Fool's Day"/>
+    <date value="*/4/23" type="secular" name="St. George's Day"/>
+    <date value="> easter(y)" type="secular" offset="-21" name="Mothering Sunday"/>
+    <date value="*/3/sun/jun" type="secular" name="Fathers' Day"/>
+    <date value="*/10/31" type="secular" name="Halloween"/>
+    <date value="*/11/5" type="secular" name="Guy Fawkes Night"/>
+    <date value="*/11/11" type="secular" name="Armistice Day"/>
+    <date value="*/2/sun/nov" type="secular" name="Remembrance Sunday"/>
+  </country>
+  <country name="Finland">
+    <date value="*/1/6" type="religious" name="Loppiainen"/>
+    <date value="*/10/1" type="religious" name="Pyhäinpäivä"/>
+    <date value="*/12/25" type="religious" name="Joulupäivä"/>
+    <date value="*/12/26" type="religious" name="Tapaninpäivä"/>
+    <date value="*/12/28" type="religious" name="Viattomien lasten päivä"/>
+    <date value="2000/4/21" type="religious" name="Pitkäperjantai"/>
+    <date value="2001/4/13" type="religious" name="Pitkäperjantai"/>
+    <date value="2002/3/29" type="religious" name="Pitkäperjantai"/>
+    <date value="2003/4/18" type="religious" name="Pitkäperjantai"/>
+    <date value="2004/4/9" type="religious" name="Pitkäperjantai"/>
+    <date value="2005/3/25" type="religious" name="Pitkäperjantai"/>
+    <date value="2006/4/14" type="religious" name="Pitkäperjantai"/>
+    <date value="2007/4/6" type="religious" name="Pitkäperjantai"/>
+    <date value="2008/3/21" type="religious" name="Pitkäperjantai"/>
+    <date value="2009/4/10" type="religious" name="Pitkäperjantai"/>
+    <date value="2010/4/2" type="religious" name="Pitkäperjantai"/>
+    <date value="2011/4/22" type="religious" name="Pitkäperjantai"/>
+    <date value="2012/4/6" type="religious" name="Pitkäperjantai"/>
+    <date value="2013/3/29" type="religious" name="Pitkäperjantai"/>
+    <date value="2014/4/18" type="religious" name="Pitkäperjantai"/>
+    <date value="2015/4/3" type="religious" name="Pitkäperjantai"/>
+    <date value="2000/4/23" type="religious" name="Pääsiäispäivä"/>
+    <date value="2001/4/15" type="religious" name="Pääsiäispäivä"/>
+    <date value="2002/3/31" type="religious" name="Pääsiäispäivä"/>
+    <date value="2003/4/20" type="religious" name="Pääsiäispäivä"/>
+    <date value="2004/4/11" type="religious" name="Pääsiäispäivä"/>
+    <date value="2005/3/27" type="religious" name="Pääsiäispäivä"/>
+    <date value="2006/4/16" type="religious" name="Pääsiäispäivä"/>
+    <date value="2007/4/8" type="religious" name="Pääsiäispäivä"/>
+    <date value="2008/3/23" type="religious" name="Pääsiäispäivä"/>
+    <date value="2009/4/12" type="religious" name="Pääsiäispäivä"/>
+    <date value="2010/4/4" type="religious" name="Pääsiäispäivä"/>
+    <date value="2011/4/24" type="religious" name="Pääsiäispäivä"/>
+    <date value="2012/4/8" type="religious" name="Pääsiäispäivä"/>
+    <date value="2013/3/31" type="religious" name="Pääsiäispäivä"/>
+    <date value="2014/4/20" type="religious" name="Pääsiäispäivä"/>
+    <date value="2015/4/5" type="religious" name="Pääsiäispäivä"/>
+    <date value="2000/4/24" type="religious" name="2. Pääsiäispäivä"/>
+    <date value="2001/4/15" type="religious" name="2. Pääsiäispäivä"/>
+    <date value="2002/4/1" type="religious" name="2. Pääsiäispäivä"/>
+    <date value="2003/4/21" type="religious" name="2. Pääsiäispäivä"/>
+    <date value="2004/4/12" type="religious" name="2. Pääsiäispäivä"/>
+    <date value="2005/3/28" type="religious" name="2. Pääsiäispäivä"/>
+    <date value="2006/4/17" type="religious" name="2. Pääsiäispäivä"/>
+    <date value="2007/4/9" type="religious" name="2. Pääsiäispäivä"/>
+    <date value="2008/3/24" type="religious" name="2. Pääsiäispäivä"/>
+    <date value="2009/4/13" type="religious" name="2. Pääsiäispäivä"/>
+    <date value="2010/4/5" type="religious" name="2. Pääsiäispäivä"/>
+    <date value="2011/4/25" type="religious" name="2. Pääsiäispäivä"/>
+    <date value="2012/4/9" type="religious" name="2. Pääsiäispäivä"/>
+    <date value="2013/4/1" type="religious" name="2. Pääsiäispäivä"/>
+    <date value="2014/4/21" type="religious" name="2. Pääsiäispäivä"/>
+    <date value="2015/4/6" type="religious" name="2. Pääsiäispäivä"/>
+    <date value="2000/6/1" type="religious" name="Helatorstai"/>
+    <date value="2001/5/24" type="religious" name="Helatorstai"/>
+    <date value="2002/5/9" type="religious" name="Helatorstai"/>
+    <date value="2003/5/29" type="religious" name="Helatorstai"/>
+    <date value="2004/5/20" type="religious" name="Helatorstai"/>
+    <date value="2005/5/5" type="religious" name="Helatorstai"/>
+    <date value="2006/5/25" type="religious" name="Helatorstai"/>
+    <date value="2007/5/17" type="religious" name="Helatorstai"/>
+    <date value="2008/5/1" type="religious" name="Helatorstai"/>
+    <date value="2009/5/21" type="religious" name="Helatorstai"/>
+    <date value="2010/5/13" type="religious" name="Helatorstai"/>
+    <date value="2011/6/2" type="religious" name="Helatorstai"/>
+    <date value="2012/5/17" type="religious" name="Helatorstai"/>
+    <date value="2013/5/9" type="religious" name="Helatorstai"/>
+    <date value="2014/5/29" type="religious" name="Helatorstai"/>
+    <date value="2015/5/14" type="religious" name="Helatorstai"/>
+    <date value="2000/6/11" type="religious" name="Helluntaipäivä"/>
+    <date value="2001/6/3" type="religious" name="Helluntaipäivä"/>
+    <date value="2002/5/19" type="religious" name="Helluntaipäivä"/>
+    <date value="2003/6/8" type="religious" name="Helluntaipäivä"/>
+    <date value="2004/5/30" type="religious" name="Helluntaipäivä"/>
+    <date value="2005/5/15" type="religious" name="Helluntaipäivä"/>
+    <date value="2006/6/4" type="religious" name="Helluntaipäivä"/>
+    <date value="2007/5/27" type="religious" name="Helluntaipäivä"/>
+    <date value="2008/5/11" type="religious" name="Helluntaipäivä"/>
+    <date value="2009/5/31" type="religious" name="Helluntaipäivä"/>
+    <date value="2010/5/23" type="religious" name="Helluntaipäivä"/>
+    <date value="2011/6/12" type="religious" name="Helluntaipäivä"/>
+    <date value="2012/5/27" type="religious" name="Helluntaipäivä"/>
+    <date value="2013/5/19" type="religious" name="Helluntaipäivä"/>
+    <date value="2014/6/8" type="religious" name="Helluntaipäivä"/>
+    <date value="2015/5/24" type="religious" name="Helluntaipäivä"/>
+    <date value="*/1/1" type="national" name="Uudenvuodenpäivä"/>
+    <date value="*/1/27" type="national" name="Vainojen uhrien muistopäivä"/>
+    <date value="*/2/5" type="national" name="J. L. Runebergin päivä"/>
+    <date value="*/2/14" type="national" name="Ystävänpäivä"/>
+    <date value="*/2/28" type="national" name="Kalevalan päivä"/>
+    <date value="*/3/19" type="national" name="Minna Canthin päivä"/>
+    <date value="*/4/9" type="national" name="Mikael Agricolan päivä"/>
+    <date value="*/4/27" type="national" name="Veteraanipäivä"/>
+    <date value="*/5/1" type="national" name="Vappu"/>
+    <date value="*/9/5" type="national" name="Eurooppa-päivä"/>
+    <date value="*/5/12" type="national" name="J. V. Snelmannin päivä"/>
+    <date value="*/6/4" type="national" name="Puolustusvoimain lippujuhlan päivä"/>
+    <date value="*/7/6" type="national" name="Eino Leinon päivä"/>
+    <date value="*/10/10" type="national" name="Aleksis Kiven päivä"/>
+    <date value="*/10/24" type="national" name="YK:n päivä"/>
+    <date value="*/11/6" type="national" name="Ruotsalaisuuden päivä"/>
+    <date value="*/11/20" type="national" name="Lasten oikeuksien päivä"/>
+    <date value="*/12/6" type="national" name="Itsenäisyyspäivä"/>
+    <date value="*/2/sun/may" type="national" name="Äitienpäivä"/>
+    <date value="*/3/sat/jun" type="national" name="Juhannuspäivä"/>
+    <date value="*/2/sun/nov" type="national" name="Isänpäivä"/>
+    <date value="*/3/sun/may" type="national" name="Kaatuneiden muistopäivä"/>
+  </country>
+  <country name="France">
+    <date value="*/1/1" type="national" name="Jour de l'an"/>
+    <date value="*/5/1" type="national" name="Fête du travail"/>
+    <date value="*/5/8" type="national" name="Victoire 1945"/>
+    <date value="*/7/14" type="national" name="Fête nationale"/>
+    <date value="*/11/11" type="national" name="Armistice 1918"/>
+    <date value="*/05/22" type="local" name="Abolition de l’esclavage (Martinique)"/>
+    <date value="*/05/27" type="local" name="Abolition de l’esclavage (Guadeloupe)"/>
+    <date value="*/06/10" type="local" name="Abolition de l’esclavage (Guyane)"/>
+    <date value="*/10/20" type="local" name="Abolition de l’esclavage (Réunion)"/>
+    <date value="> easter(y)" type="religious" offset="-2" name="Vendredi Saint (Alsace/Moselle)"/>
+    <date value="> easter(y)" type="religious" name="Pâques"/>
+    <date value="> easter(y)" type="religious" offset="1" name="Lundi de pâques"/>
+    <date value="> easter(y)" type="religious" offset="39" name="Ascension"/>
+    <date value="> easter(y)" type="religious" offset="49" name="Pentecôte"/>
+    <date value="> easter(y)" type="religious" offset="50" name="Lundi de pentecôte"/>
+    <date value="*/8/15" type="religious" name="Assomption"/>
+    <date value="*/11/1" type="religious" name="Toussaint"/>
+    <date value="*/11/2" type="religious" name="Jour des morts (Antilles)"/>
+    <date value="*/12/25" type="religious" name="Noël"/>
+    <date value="> passover(y)" type="religious" name="Pâque juive"/>
+    <date value="> passover(y)" type="religious" offset="172" name="Yom Kippour"/>
+    <date value="> hanuka(y)" type="religious" name="Hanoucca"/>
+    <date value="2006/09/24" type="religious" name="début Ramadan"/>
+    <date value="2007/09/13" type="religious" name="début Ramadan"/>
+    <date value="2008/09/02" type="religious" name="début Ramadan"/>
+    <date value="2009/08/22" type="religious" name="début Ramadan"/>
+    <date value="2010/08/12" type="religious" name="début Ramadan"/>
+    <date value="2011/08/02" type="religious" name="début Ramadan"/>
+    <date value="2012/07/21" type="religious" name="début Ramadan"/>
+    <date value="2013/07/09" type="religious" name="début Ramadan"/>
+    <date value="2014/06/29" type="religious" name="début Ramadan"/>
+    <date value="2015/06/19" type="religious" name="début Ramadan"/>
+    <date value="2016/06/08" type="religious" name="début Ramadan"/>
+    <date value="*/12/26" type="religious" name="Saint Étienne (Alsace/Moselle)"/>
+  </country>
+  <country name="Germany">
+    <date value="*/1/1" type="national" name="Neujahr"/>
+    <date value="*/1/6" type="religious" name="Hl. Drei Könige BW,BY,ST"/>
+    <date value="> easter(y)" type="religious" offset="-2" name="Karfreitag"/>
+    <date value="> easter(y)" type="religious" offset="+1" name="Ostermontag"/>
+    <date value="*/5/1" type="national" name="Maifeiertag"/>
+    <date value="> easter(y)" type="religious" offset="+39" name="Christi Himmelfahrt"/>
+    <date value="> easter(y)" type="religious" offset="+50" name="Pfingstmontag"/>
+    <date value="> easter(y)" type="religious" offset="+60" name="Fronleichnam BW, BY, HE, NW, RP, SL"/>
+    <date value="*/8/15" type="religious" name="Mariä Himmelfahrt SL"/>
+    <date value="*/10/3" type="national" name="Tag der Deutschen Einheit"/>
+    <date value="*/10/31" type="religious" name="Reformationstag BB, MV, SN, ST, TH"/>
+    <date value="*/11/1" type="religious" name="Allerheiligen BW, BY, NW, RP, SL"/>
+    <date value="*/11/23" type="religious" offset="-wed" name="Buß- u. Bettag SN"/>
+    <date value="*/12/25" type="religious" name="1. Weihnachtsfeiertag"/>
+    <date value="*/12/26" type="religious" name="2. Weihnachtsfeiertag"/>
+  </country>
+  <country name="Japan">
+    <date value="*/1/1" name="元日"/>
+    <date value="*/2/mon/jan" name="成人の日"/>
+    <date value="*/2/11" name="建国記念の日"/>
+    <date value="*/3/20" name="春分の日"/>
+    <date value="*/3/21" name="春分の日"/>
+    <date value="*/4/29" name="昭和の日"/>
+    <date value="*/5/3" name="憲法記念日"/>
+    <date value="*/5/4" name="みどりの日"/>
+    <date value="*/5/5" name="こどもの日"/>
+    <date value="*/3/mon/jul" name="海の日"/>
+    <date value="*/3/mon/sep" name="敬老の日"/>
+    <date value="*/9/22" name="秋分の日"/>
+    <date value="*/9/23" name="秋分の日"/>
+    <date value="*/2/mon/oct" name="体育の日"/>
+    <date value="*/11/3" name="文化の日"/>
+    <date value="*/11/23" name="勤労感謝の日"/>
+    <date value="*/12/23" name="天皇誕生日"/>
+    <date value="1959/4/10" name="皇太子明仁親王の結婚"/>
+    <date value="1989/2/24" name="昭和天皇の大喪の礼"/>
+    <date value="1990/11/12" name="天皇(明仁)即位記念"/>
+    <date value="1993/6/9" name="皇太子徳仁親王の結婚"/>
+  </country>
+  <country name="Sweden - Holidays">
+    <date value="*/1/1" type="religious" name="Nyårsdagen"/>
+    <date value="*/1/6" type="religious" name="Trettondagen"/>
+    <date value="> easter(y)" type="religious" offset="-2" name="Långfredagen"/>
+    <date value="> easter(y)" type="religious" name="Påskdagen"/>
+    <date value="> easter(y)" type="religious" offset="2" name="Annandag Påsk"/>
+    <date value="*/5/1" type="secular" name="Första Maj"/>
+    <date value="> easter(y)" type="religious" offset="+39" name="Kristi Himmelfärdsdag"/>
+    <date value="easter(y)" type="secular" offset="50" name="Annandag Pingst" if="not(y>=2006)"/>
+    <date value="*/6/6" type="secular" name="Nationaldagen" if="(y>=2006)"/>
+    <date value="*/jun/20" type="religious" offset="sat" name="Midsommardagen" if="(y>=1953)"/>
+    <date value="*/jun/24" type="religious" name="Midsommardagen" if="not(y>=1953)"/>
+    <date value="*/1/sat/nov" type="religious" name="Allahelgonadagen"/>
+    <date value="*/12/25" type="religious" name="Juldagen"/>
+    <date value="*/12/26" type="religious" name="Annandag Jul"/>
+  </country>
+  <country name="United States of America">
+    <date value="*/12/31" type="national" name="New Year's Eve"/>
+    <date value="*/1/1" type="national" name="New Year's Day"/>
+    <date value="*/3/mon/jan" type="secular" name="ML Kings's Birthday"/>
+    <date value="*/2/2" type="secular" name="Groundhog Day"/>
+    <date value="*/2/12" type="secular" name="Lincoln's Birthday"/>
+    <date value="*/1/sun/feb" type="secular" name="Super Bowl"/>
+    <date value="*/2/14" type="secular" name="Valentine's Day"/>
+    <date value="*/3/mon/feb" type="secular" name="Presidents' Day"/>
+    <date value="*/3/mon/feb" type="secular" name="Washington's Birthday"/>
+    <date value="*/3/17" type="secular" name="St. Patrick's Day"/>
+    <date value="*/4/1" type="secular" name="April Fool's Day"/>
+    <date value="*/-1/fri/apr" type="secular" name="Arbor Day"/>
+    <date value="*/4/22" type="secular" name="Earth Day"/>
+    <date value="> easter(y)" type="religious" name="Easter"/>
+    <date value="> easter(y)" type="religious" offset="-46" name="Ash Wednesday"/>
+    <date value="> easter(y)" type="religious" offset="-47" name="Mardi Gras"/>
+    <date value="> dst(y)[0]" type="informational" name="Daylight Saving begins"/>
+    <date value="*/4/15" type="national" name="Income Taxes due" if="date.weekday().__cmp__(4)-1"/>
+    <date value="*/4/16" type="national" name="Income Taxes due" if="date.weekday() == 0"/>
+    <date value="*/4/17" type="national" name="Income Taxes due" if="date.weekday() == 0"/>
+    <date value="> dst(y)[1]" type="informational" name="Daylight Saving ends"/>
+    <date value="*/1/20" type="national" name="Inauguration Day" if="(y - 1980) % 4 == 1"/>
+    <date value="> passover(y)" type="religious" name="Passover"/>
+    <date value="*/-1/sat/apr" type="secular" offset="-3" name="Assistants' Day"/>
+    <date value="*/5/5" type="secular" name="Cinco de Mayo"/>
+    <date value="*/3/sat/may" type="secular" name="Armed Forces Day"/>
+    <date value="*/2/sun/may" type="secular" name="Mothers' Day"/>
+    <date value="*/-1/mon/may" type="secular" name="Memorial Day"/>
+    <date value="*/6/14" type="secular" name="Flag Day"/>
+    <date value="*/3/sun/jun" type="secular" name="Fathers' Day"/>
+    <date value="*/7/4" type="national" name="Independence Day"/>
+    <date value="*/4/sun/jul" type="secular" name="Parents' Day"/>
+    <date value="*/1/mon/sep" type="national" name="Labor Day"/>
+    <date value="*/1/mon/sep" type="secular" offset="6" name="Grandparents' Day"/>
+    <date value="*/2/mon/oct" type="secular" name="Columbus Day"/>
+    <date value="2006/09/24" type="religious" name="Ramadan begins"/>
+    <date value="2007/09/13" type="religious" name="Ramadan begins"/>
+    <date value="2008/09/2" type="religious" name="Ramadan begins"/>
+    <date value="2009/08/22" type="religious" name="Ramadan begins"/>
+    <date value="> passover(y)" type="religious" offset="172" name="Yom Kippur"/>
+    <date value="*/10/24" type="secular" name="United Nations Day"/>
+    <date value="*/10/31" type="secular" name="Halloween"/>
+    <date value="*/11/2" type="secular" offset="tue" name="Election Day"/>
+    <date value="*/11/11" type="national" name="Veterans Day"/>
+    <date value="*/4/thu/nov" type="national" name="Thanksgiving"/>
+    <date value="> hanuka(y)" type="religious" name="Hanukkah begins"/>
+    <date value="*/12/25" type="religious" name="Christmas"/>
+    <date value="*/12/26" type="religious" name="Kwanzaa begins"/>
+  </country>
+  <country name="Jewish Holidays">
+    <date value="> passover(y)" offset="-30" name="Purim"></date>
+    <date value="> passover(y)" offset="0" name="Passover"></date>
+    <date value="> passover(y)" offset="1" name="2 of Passover"></date>
+    <date value="> passover(y)" offset="2" name="3 of Passover"></date>
+    <date value="> passover(y)" offset="3" name="4 of Passover"></date>
+    <date value="> passover(y)" offset="4" name="5 of Passover"></date>
+    <date value="> passover(y)" offset="5" name="6 of Passover"></date>
+    <date value="> passover(y)" offset="6" name="7 of Passover"></date>
+    <date value="> passover(y)" offset="50" name="Shavuot"></date>
+    <date value="> passover(y)" offset="163" name="Rosh Ha'Shana"></date>
+    <date value="> passover(y)" offset="164" name="Rosh Ha'Shana 2"></date>
+    <date value="> passover(y)" offset="172" name="Yom Kippur"></date>
+    <date value="> passover(y)" offset="177" name="Sukot"></date>
+    <date value="> passover(y)" offset="178" name="2 of Sukot"></date>
+    <date value="> passover(y)" offset="179" name="3 of Sukot"></date>
+    <date value="> passover(y)" offset="180" name="4 of Sukot"></date>
+    <date value="> passover(y)" offset="181" name="5 of Sukot"></date>
+    <date value="> passover(y)" offset="182" name="6 of Sukot"></date>
+    <date value="> passover(y)" offset="183" name="7 of Sukot"></date>
+    <date value="> passover(y)" offset="184" name="Simhat Tora"></date>
+    <date value="> hanuka(y)" offset="0" name="Hanuka"></date>
+    <date value="> hanuka(y)" offset="1" name="2 of Hanuka"></date>
+    <date value="> hanuka(y)" offset="2" name="3 of Hanuka"></date>
+    <date value="> hanuka(y)" offset="3" name="4 of Hanuka"></date>
+    <date value="> hanuka(y)" offset="4" name="5 of Hanuka"></date>
+    <date value="> hanuka(y)" offset="5" name="6 of Hanuka"></date>
+    <date value="> hanuka(y)" offset="6" name="7 of Hanuka"></date>
+    <date value="> hanuka(y)" offset="7" name="8 of Hanuka"></date>
+  </country>
+  <country name="New Zealand">
+    <date value="*/1/1" type="national" name="New Year's Day"/>
+    <date value="*/1/2" type="national" name="Day After New Year's Day"/>
+    <date value="*/1/1" type="national" offset="+1" name="New Years Day Holiday" if="dow(y, m, d) == 7"/>
+    <date value="*/1/1" type="national" offset="+2" name="Day After New Years Day Holiday" if="dow(y, m, d) == 6"/>
+    <date value="*/feb/6" type="national" name="Waitangi Day"/>
+    <date value="> easter(y)" type="national" offset="-2" name="Good Friday"/>
+    <date value="> easter(y)" type="national" offset="+1" name="Easter Monday"/>
+    <date value="*/apr/25" type="national" name="ANZAC Day"/>
+    <date value="*/-1/mon/jun" type="national" name="Queen's Birthday Holiday"/>
+    <date value="*/-4/mon/oct" type="national" name="Labour Day"/>
+    <date value="*/dec/25" type="national" name="Christmas Day"/>
+    <date value="*/dec/26" type="national" name="Boxing Day"/>
+    <date value="*/dec/25" type="national" offset="+2" name="Christmas Day Holiday" if="dow(y, m, d) > 5"/>
+    <date value="*/dec/26" type="national" offset="+2" name="Boxing Day Holiday" if="dow(y, m, d) > 5"/>
+  </country> 
+  <country name="Ukraine">
+    <date value="*/1/1" type="national" name="Новий Рік"/>
+    <date value="*/1/6" type="religious" name="Святий Вечір"/>
+    <date value="*/1/7" type="religious" name="Різдво"/>
+    <date value="*/1/13" type="religious" name="Маланка"/>
+    <date value="*/1/14" type="religious" name="Старий Новий рік, Щедрий вечір"/>
+    <date value="*/1/19" type="religious" name="Водохреща"/>
+    <date value="*/1/22" type="national" name="День Соборності України"/>
+    <date value="*/2/14" type="secular" name="День закоханих"/>
+    <date value="*/2/15" type="religious" name="Стрітення"/>
+    <date value="*/3/8" type="secular" name="Міжнародний жіночий день"/>
+    <date value="*/3/20" type="secular" name="Весняне Рівнодення"/>
+    <date value="*/4/1" type="secular" name="День сміху"/>
+    <date value="*/4/7" type="religious" name="Благовіщення"/>
+    <date value="2010/4/4" type="religious" name="Великдень"/>
+    <date value="2011/4/24" type="religious" name="Великдень"/>
+    <date value="2012/4/15" type="religious" name="Великдень"/>
+    <date value="2013/5/5" type="religious" name="Великдень"/>
+    <date value="2014/4/20" type="religious" name="Великдень"/>
+    <date value="2015/4/12" type="religious" name="Великдень"/>
+    <date value="2016/5/1" type="religious" name="Великдень"/>
+    <date value="2017/4/16" type="religious" name="Великдень"/>
+    <date value="2018/4/8" type="religious" name="Великдень"/>
+    <date value="2019/4/28" type="religious" name="Великдень"/>
+    <date value="2020/4/19" type="religious" name="Великдень"/>
+    <date value="*/5/1" type="national" name="День Праці"/>
+    <date value="*/6/21" type="secular" name="Весняне Сонцестояння"/>
+    <date value="*/6/28" type="national" name="День Конституції України"/>
+    <date value="*/7/7" type="religious" name="Івана Купала"/>
+    <date value="*/8/19" type="religious" name="Спаса"/>
+    <date value="*/8/24" type="national" name="День Незалежності України"/>
+    <date value="*/9/22" type="secular" name="Осіннє Рівнодення"/>
+    <date value="*/10/14" type="religious" name="Покрова, День Українського козацтва"/>
+    <date value="*/12/13" type="religious" name="Андрія"/>
+    <date value="*/12/19" type="religious" name="Миколая"/>
+    <date value="*/12/21" type="secular" name="Осіннє Сонцестояння"/>
+  </country>
+</calendar>
