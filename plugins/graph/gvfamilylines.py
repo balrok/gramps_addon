@@ -757,8 +757,24 @@ class FamilyLinesReport(Report):
         if self._incimages:
             bUseHtmlOutput = True
 
-        # loop through all the people we need to output
-        for handle in self._people:
+        def personSorter(handle):
+            person = self._db.get_person_from_handle(handle)
+            fHandle = person.get_main_parents_family_handle()
+            if fHandle:
+                family = self._db.get_family_from_handle(fHandle)
+                if family:
+                    childList = family.get_child_ref_list()
+                    childListRef = []
+                    for ch in childList:
+                        childListRef.append(ch.ref)
+                    try:
+                        return childListRef.index(person.get_handle())
+                    except:
+                        pass
+            return 0
+
+        sorted_people = sorted(self._people, key=personSorter)
+        for handle in sorted_people:
             person = self._db.get_person_from_handle(handle)
             name = self._name_display.display(person)
 
