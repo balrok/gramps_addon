@@ -42,7 +42,6 @@ from functools import partial
 #------------------------------------------------------------------------
 import logging
 log = logging.getLogger(".FamilyLines")
-raise Exception()
 #------------------------------------------------------------------------
 #
 # GRAMPS module
@@ -62,6 +61,7 @@ from gramps.gen.plug.menu import (NumberOption, ColorOption, BooleanOption,
                                   SurnameColorOption)
 from gramps.gen.utils.db import get_birth_or_fallback, get_death_or_fallback, get_marriage_or_fallback
 from gramps.gen.utils.location import get_main_location
+
 
 #------------------------------------------------------------------------
 #
@@ -832,7 +832,6 @@ class FamilyLinesReport(Report):
 
             # at the very least, the label must have the person's name
             label += name
-            label += "ASDSAD"
             if birthStr or deathStr:
                 label += '%s(' % lineDelimiter
                 if birthStr:
@@ -928,7 +927,12 @@ class FamilyLinesReport(Report):
             # figure out the number of children (if any)
             childrenStr = None
             if self._incchildcount:
-                child_count = len(family.get_child_ref_list())
+                child_count = 0
+                # to make sure only non-private people are counted
+                for childRef in family.get_child_ref_list():
+                    if childRef.ref in self._people:
+                        child_count += 1
+                # child_count = len(family.get_child_ref_list())
                 if child_count >= 1:
                     # translators: leave all/any {...} untranslated
                     childrenStr = ngettext("{number_of} child",
