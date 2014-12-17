@@ -714,6 +714,38 @@ class FamilyLinesReport(Report):
         # we now merge our temp set "childrenToInclude" into our master set
         self._people.update(childrenToInclude)
 
+    def getNameAndBirthDeath(self, person):
+        bth_event = get_birth_or_fallback(self._db, person)
+        dth_event = get_death_or_fallback(self._db, person)
+        birthStr = None
+        deathStr = None
+        if bth_event and self._incdates:
+            if not bth_event.private or self._incprivate:
+                date = bth_event.get_date_object()
+                birthStr = '%i' % date.get_year()
+        if dth_event and self._incdates:
+            if not dth_event.private or self._incprivate:
+                date = dth_event.get_date_object()
+                deathStr = '%i' % date.get_year()
+
+        label = self._name_display.display(person)
+        if birthStr or deathStr:
+            label += ' ('
+            if birthStr:
+                label += '*%s' % birthStr
+            if deathStr:
+                label += '-%s' % deathStr
+            label += ')'
+        return label
+
+    def getOccupations(self, person):
+        occupations = []
+        for event_ref in person.get_primary_event_ref_list():
+            event = self._db.get_event_from_handle(event_ref.ref)
+            if event.get_type() == EventType.OCCUPATION:
+                if (event.private and self._incprivate) or not event.private:
+                    occupations.append(event.description)
+        return occupations
 
     def writePeople(self):
 
@@ -799,6 +831,8 @@ class FamilyLinesReport(Report):
                         elif location.get(PlaceType.COUNTRY):
                             deathplace = location.get(PlaceType.COUNTRY)
 
+            occupations = self.getOccupations(person)
+
             # see if we have an image to use for this person
             imagePath = None
             if self._incimages:
@@ -852,6 +886,11 @@ class FamilyLinesReport(Report):
                 if deathplace:
                     label += '%s' % deathplace
 
+            if len(occupations) > 0:
+                plural = ''
+                if len(occupations) > 1:
+                    plural = 'e'
+                label += '%s Beruf%s: %s' % (lineDelimiter, plural, ', '.join(occupations))
 
 
             for family_handle in person.get_family_handle_list():
@@ -863,32 +902,7 @@ class FamilyLinesReport(Report):
                     for childRef in family.get_child_ref_list():
                         child = self._db.get_person_from_handle(childRef.ref)
                         if (child.private and self._incprivate) or not child.private:
-
-                            bth_event2 = get_birth_or_fallback(self._db, child)
-                            dth_event2 = get_death_or_fallback(self._db, child)
-                            birthStr2 = None
-                            deathStr2 = None
-                            if bth_event2 and self._incdates:
-                                if not bth_event2.private or self._incprivate:
-                                    date = bth_event2.get_date_object()
-                                    birthStr2 = '%i' % date.get_year()
-                            if dth_event2 and self._incdates:
-                                if not dth_event2.private or self._incprivate:
-                                    date = dth_event2.get_date_object()
-                                    deathStr2 = '%i' % date.get_year()
-
-                            childLabel = self._name_display.display(child)
-                            print birthStr2
-                            print deathStr2
-                            print birthStr2 or deathStr2
-                            if birthStr2 or deathStr2:
-                                childLabel += ' ('
-                                if birthStr2:
-                                    childLabel += '*%s' % birthStr2
-                                if deathStr2:
-                                    childLabel += '-%s' % deathStr2
-                                childLabel += ')'
-                            children.append(childLabel)
+                            children.append(self.getNameAndBirthDeath(child))
                             for family_handle2 in child.get_family_handle_list():
                                 family2 = self._db.get_family_from_handle(family_handle2)
                                 for childRef2 in family2.get_child_ref_list():
@@ -988,17 +1002,25 @@ class FamilyLinesReport(Report):
             childrenStr = None
             if self._incchildcount:
                 child_count = 0
-                # to make sure only non-private people are counted
+                # to make sure only non-private people are counted and to save people who aren't displayed
+                notDisplayedPeople = []
                 for childRef in family.get_child_ref_list():
                     person = self._db.get_person_from_handle(childRef.ref)
                     if (person.private and self._incprivate) or not person.private:
                         child_count += 1
+                        if childRef.ref not in self._people:
+                            notDisplayedPeople.append(person)
                 # child_count = len(family.get_child_ref_list())
                 if child_count >= 1:
                     # translators: leave all/any {...} untranslated
                     childrenStr = ngettext("{number_of} child",
                                            "{number_of} children", child_count
                                           ).format(number_of=child_count)
+                    if len(notDisplayedPeople) > 0:
+                        for child in notDisplayedPeople:
+                            childLabel = self.getNameAndBirthDeath(child)
+                            if childLabel:
+                                childrenStr += "\n"+childLabel
 
             label = ''
 
