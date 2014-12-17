@@ -854,6 +854,61 @@ class FamilyLinesReport(Report):
 
 
 
+            for family_handle in person.get_family_handle_list():
+                if family_handle not in self._families:
+                    family = self._db.get_family_from_handle(family_handle)
+
+                    children = []
+                    grandChildren = 0
+                    for childRef in family.get_child_ref_list():
+                        child = self._db.get_person_from_handle(childRef.ref)
+                        if (child.private and self._incprivate) or not child.private:
+
+                            bth_event2 = get_birth_or_fallback(self._db, child)
+                            dth_event2 = get_death_or_fallback(self._db, child)
+                            birthStr2 = None
+                            deathStr2 = None
+                            if bth_event2 and self._incdates:
+                                if not bth_event2.private or self._incprivate:
+                                    date = bth_event2.get_date_object()
+                                    birthStr2 = '%i' % date.get_year()
+                            if dth_event2 and self._incdates:
+                                if not dth_event2.private or self._incprivate:
+                                    date = dth_event2.get_date_object()
+                                    deathStr2 = '%i' % date.get_year()
+
+                            childLabel = self._name_display.display(child)
+                            print birthStr2
+                            print deathStr2
+                            print birthStr2 or deathStr2
+                            if birthStr2 or deathStr2:
+                                childLabel += ' ('
+                                if birthStr2:
+                                    childLabel += '*%s' % birthStr2
+                                if deathStr2:
+                                    childLabel += '-%s' % deathStr2
+                                childLabel += ')'
+                            children.append(childLabel)
+                            for family_handle2 in child.get_family_handle_list():
+                                family2 = self._db.get_family_from_handle(family_handle2)
+                                for childRef2 in family2.get_child_ref_list():
+                                    child2 = self._db.get_person_from_handle(childRef2.ref)
+                                    if (child2.private and self._incprivate) or not child2.private:
+                                        grandChildren += 1
+
+                    if len(children) > 0:
+                        # label += '<div style="text-align:left">'
+                        label += lineDelimiter + 'Kinder:'
+                        if len(children) < 3:
+                            for i in children:
+                                label += lineDelimiter + i
+                        else:
+                            label += ' ' + unicode(len(children))
+                        if grandChildren > 0:
+                            label += lineDelimiter + 'Enkel: ' + unicode(grandChildren)
+                        # label += '</div>'
+
+
             # see if we have a table that needs to be terminated
             if imagePath:
                 label += '</TD></TR></TABLE>'
@@ -935,7 +990,8 @@ class FamilyLinesReport(Report):
                 child_count = 0
                 # to make sure only non-private people are counted
                 for childRef in family.get_child_ref_list():
-                    if childRef.ref in self._people:
+                    person = self._db.get_person_from_handle(childRef.ref)
+                    if (person.private and self._incprivate) or not person.private:
                         child_count += 1
                 # child_count = len(family.get_child_ref_list())
                 if child_count >= 1:
