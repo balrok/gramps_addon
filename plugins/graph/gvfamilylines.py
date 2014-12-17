@@ -832,6 +832,7 @@ class FamilyLinesReport(Report):
 
             # at the very least, the label must have the person's name
             label += name
+            print name
             if birthStr or deathStr:
                 label += '%s(' % lineDelimiter
                 if birthStr:
@@ -850,6 +851,8 @@ class FamilyLinesReport(Report):
                     label += ' / '
                 if deathplace:
                     label += '%s' % deathplace
+
+
 
             # see if we have a table that needs to be terminated
             if imagePath:
@@ -895,6 +898,7 @@ class FamilyLinesReport(Report):
             fgid = family.get_gramps_id()
 
             # figure out a wedding date or placename we can use
+            hasWedding = False
             weddingDate = None
             weddingPlace = None
             if self._incdates or self._incplaces:
@@ -905,6 +909,7 @@ class FamilyLinesReport(Report):
                     event_ref.get_role() == EventRoleType.PRIMARY ):
                         # get the wedding date
                         if (event.private and self._incprivate) or not event.private:
+                            hasWedding = True
                             if self._incdates:
                                 date = event.get_date_object()
                                 if self._just_years and date.get_year_valid():
@@ -940,10 +945,13 @@ class FamilyLinesReport(Report):
                                           ).format(number_of=child_count)
 
             label = ''
-            if weddingDate:
+
+            if hasWedding:
                 if label != '':
                     label += '\\n'
-                label += '%s' % weddingDate
+                label += 'oo'
+            if weddingDate:
+                label += ' %s' % weddingDate
             if weddingPlace:
                 if label != '':
                     label += '\\n'
