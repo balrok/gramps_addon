@@ -198,7 +198,8 @@ class BasePluginManager(object):
         module. Plugin directories are added to sys path, so files are found
         """
         if pdata.id in self.__loaded_plugins:
-            return self.__loaded_plugins[pdata.id]
+            return self.import_plugin(pdata)
+            # return self.__loaded_plugins[pdata.id]
         need_reload = False
         filename = pdata.fname
         if filename in self.__modules:
@@ -256,7 +257,6 @@ class BasePluginManager(object):
                 sys.path.insert(0, pdata.fpath)
                 try:
                     module = __import__(pdata.mod_name)
-                    print(dir(pdata))
                 except ValueError as err:
                     # Python3 on Windows  work with unicode in sys.path
                     # but they are mbcs encode for checking validity
@@ -292,11 +292,13 @@ class BasePluginManager(object):
                     else:
                         LOG.warning("Plugin error (from '%s'): %s"
                                         % (pdata.mod_name, err))
+                reload(module)
                 sys.path.pop(0)
             else:
                 print("WARNING: module cannot be loaded")
         else:
             module = __import__(pdata.mod_name)
+            reload(module)
         return module
 
     def empty_managed_plugins(self):
