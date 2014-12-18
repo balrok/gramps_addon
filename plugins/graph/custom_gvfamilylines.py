@@ -260,6 +260,29 @@ class FamilyLinesOptions(MenuReportOptions):
         include_private.set_help(_('Whether to include names, dates, and '
                                    'families that are marked as private.'))
         add_option('incprivate', include_private)
+
+
+        # --------------------
+        add_option = partial(menu.add_option, _('Custom Options'))
+
+        include_extra_childs = BooleanOption(_('Include extra children'), False)
+        include_private.set_help(_('Whether to include extra children, which come from another, not displayed, family'))
+        add_option('inc_extra_child', include_extra_childs)
+
+        include_extra_childs_num = NumberOption('Full display of how many extra children', 1, 1, 9999)
+        include_private.set_help(_('How many extra children are printed with name and date'))
+        add_option('inc_extra_child_num', include_extra_childs_num)
+
+        include_extra_gchilds = BooleanOption(_('Include extra grandchildren'), False)
+        include_private.set_help(_('Whether to include extra grandchildren, which come from another, not displayed, family'))
+        add_option('inc_extra_gchild', include_extra_gchilds)
+
+        include_extra_gchilds_num = NumberOption('Full display of how many extra grandchildren', 1, 1, 9999)
+        include_private.set_help(_('How many extra grandchildren are printed with name and date'))
+        add_option('inc_extra_gchild_num', include_extra_gchilds_num)
+
+
+        # --------------------
         
         self.limit_changed()
         self.images_changed()
@@ -337,6 +360,10 @@ class FamilyLinesReport(Report):
         self._incplaces = get_value('incplaces')
         self._incchildcount = get_value('incchildcnt')
         self._incprivate = get_value('incprivate')
+        self._inc_extra_child = get_value('inc_extra_child')
+        self._inc_extra_child_num = get_value('inc_extra_child_num')
+        self._inc_extra_gchild = get_value('inc_extra_gchild')
+        self._inc_extra_gchild_num = get_value('inc_extra_gchild_num')
 
         # the gidlist is annoying for us to use since we always have to convert
         # the GIDs to either Person or to handles, so we may as well convert the
@@ -747,6 +774,58 @@ class FamilyLinesReport(Report):
                     occupations.append(event.description)
         return occupations
 
+
+    # returns a list of tuple (person, string) with the child
+    # 2nd parameter is a method to format the child
+    # 3rd parameter is a method to filter the families
+    def getChildList(self, person, formatting_method, filter_method):
+        children = []
+        for family_handle in person.get_family_handle_list():
+            if filter_method(family_handle):
+                continue
+            family = self._db.get_family_from_handle(family_handle)
+            if family.private and not self._incprivate:
+                continue
+            for childRef in family.get_child_ref_list():
+                child = self._db.get_person_from_handle(childRef.ref)
+                if (child.private and self._incprivate) or not child.private:
+                    children.append((child, formatting_method(child)))
+        return children
+
+    def getExtraChildren(self, person, lineDelimiter):
+        label = ''
+        if not self._inc_extra_child:
+            return label
+
+        def filter_family(family_handle):
+            return family_handle in self._families
+
+        children = self.getChildList(person, self.getNameAndBirthDeath, filter_family)
+        if len(children) > 0:
+            # label += '<div style="text-align:left">'
+            # TODO make translatable
+            label += lineDelimiter + 'Mehr Kinder: '+ unicode(len(children))
+            if len(children) < self._inc_extra_child_num:
+                for i in children:
+                    if i[1]:
+                        label += lineDelimiter + i[1]
+
+        if not self._inc_extra_gchild:
+            return label
+
+        grandChildren = []
+        for i in children:
+            grandChildren.extend(self.getChildList(i[0], self.getNameAndBirthDeath, filter_family))
+        # TODO make translatable
+        if len(grandChildren) > 0:
+            label += lineDelimiter + 'Enkel: '+ unicode(len(grandChildren))
+            if len(grandChildren) < self._inc_extra_gchild_num:
+                for i in grandChildren:
+                    if i[1]:
+                        label += lineDelimiter + i[1]
+        return label
+
+
     def writePeople(self):
 
         self.doc.add_comment('')
@@ -911,39 +990,10 @@ class FamilyLinesReport(Report):
                 label += '%s Beruf%s: %s' % (lineDelimiter, plural, ', '.join(occupations))
 
 
-            for family_handle in person.get_family_handle_list():
-                if family_handle not in self._families:
-                    # label += '<small>'
-                    family = self._db.get_family_from_handle(family_handle)
+            if self._inc_extra_child:
+                label += self.getExtraChildren(person, lineDelimiter)
 
-                    children = []
-                    grandChildren = []
-                    for childRef in family.get_child_ref_list():
-                        child = self._db.get_person_from_handle(childRef.ref)
-                        if (child.private and self._incprivate) or not child.private:
-                            children.append(self.getNameAndBirthDeath(child))
-                            for family_handle2 in child.get_family_handle_list():
-                                family2 = self._db.get_family_from_handle(family_handle2)
-                                for childRef2 in family2.get_child_ref_list():
-                                    child2 = self._db.get_person_from_handle(childRef2.ref)
-                                    if (child2.private and self._incprivate) or not child2.private:
-                                        grandChildren.append(self.getNameAndBirthDeath(child2))
 
-                    if len(children) > 0:
-                        # label += '<div style="text-align:left">'
-                        label += lineDelimiter + 'Mehr Kinder: '+ unicode(len(children))
-                        if len(children) < 3:
-                            for i in children:
-                                if i:
-                                    label += lineDelimiter + i
-                        if len(grandChildren) > 0:
-                            label += lineDelimiter + 'Enkel: ' + unicode(len(grandChildren))
-                            if len(grandChildren) < 3:
-                                for i in grandChildren:
-                                    if i:
-                                        label += lineDelimiter + i
-                        # label += '</small>'
-                        # label += '</div>'
 
 
             # see if we have a table that needs to be terminated
@@ -970,6 +1020,11 @@ class FamilyLinesReport(Report):
                 style += ",filled"
                 border = ""
 
+
+            #subst = SubstKeywords(self._db, self._locale, self._nd,
+            #                      None, None)
+            #label = subst.replace_and_clean(self._displayText)
+            
             # we're done -- add the node
             self.doc.add_node(person.get_gramps_id(),
                  label=label,
