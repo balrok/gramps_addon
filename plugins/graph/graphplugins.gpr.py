@@ -17,6 +17,28 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+#------------------------------------------------------------------------
+#
+# Custom Family Lines Graph
+#
+#------------------------------------------------------------------------
+
+plg = newplugin()
+plg.id    = 'custom_familylines_graph'
+plg.name  = _("Custom Family Lines Graph")
+plg.description =  _("Produces custom family line graphs using GraphViz.")
+plg.version = '1.0'
+plg.gramps_target_version = '4.1'
+plg.status = STABLE
+plg.fname = 'custom_gvfamilylines.py'
+plg.ptype = REPORT
+plg.authors = ["Stephane Charette", "Carl Schoenbach"]
+plg.authors_email = ["stephanecharette@gmail.com", "carl.schoenbach@gmail.com"]
+plg.category = CATEGORY_GRAPHVIZ
+plg.reportclass = 'FamilyLinesReport'
+plg.optionclass = 'FamilyLinesOptions'
+plg.report_modes = [REPORT_MODE_GUI, REPORT_MODE_CLI]
+plg.require_active = False
 
 #------------------------------------------------------------------------
 #
