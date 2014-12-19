@@ -56,13 +56,13 @@ from gramps.gen.plug.report import Report
 from gramps.gen.plug.report import utils as ReportUtils
 from gramps.gen.plug.report import MenuReportOptions
 from gramps.gen.plug.report import stdoptions
-from gramps.gen.plug.menu import (NumberOption, ColorOption, BooleanOption,
+from gramps.gen.plug.menu import (TextOption, NumberOption, ColorOption, BooleanOption,
                                   EnumeratedListOption, PersonListOption,
                                   SurnameColorOption)
 from gramps.gen.utils.db import get_birth_or_fallback, get_death_or_fallback, get_marriage_or_fallback
 from gramps.gen.utils.location import get_main_location
-
-
+from gramps.plugins.lib.libsubstkeyword import SubstKeywords
+from gramps.plugins.lib.libtreebase import CalcLines
 #------------------------------------------------------------------------
 #
 # Constant options items
@@ -71,6 +71,10 @@ from gramps.gen.utils.location import get_main_location
 _COLORS = [ { 'name' : _("B&W outline"),     'value' : "outline" },
             { 'name' : _("Colored outline"), 'value' : "colored" },
             { 'name' : _("Color fill"),      'value' : "filled"  }]
+
+_BORN = _("birth abbreviation|b."),
+_DIED = _("death abbreviation|d."),
+_MARR = _("marriage abbreviation|m."),
 
 #------------------------------------------------------------------------
 #
@@ -270,17 +274,28 @@ class FamilyLinesOptions(MenuReportOptions):
         add_option('inc_extra_child', include_extra_childs)
 
         include_extra_childs_num = NumberOption('Full display of how many extra children', 1, 1, 9999)
-        include_private.set_help(_('How many extra children are printed with name and date'))
+        include_extra_childs_num.set_help(_('How many extra children are printed with name and date'))
         add_option('inc_extra_child_num', include_extra_childs_num)
 
         include_extra_gchilds = BooleanOption(_('Include extra grandchildren'), False)
-        include_private.set_help(_('Whether to include extra grandchildren, which come from another, not displayed, family'))
+        include_extra_gchilds.set_help(_('Whether to include extra grandchildren, which come from another, not displayed, family'))
         add_option('inc_extra_gchild', include_extra_gchilds)
 
         include_extra_gchilds_num = NumberOption('Full display of how many extra grandchildren', 1, 1, 9999)
-        include_private.set_help(_('How many extra grandchildren are printed with name and date'))
+        include_extra_gchilds_num.set_help(_('How many extra grandchildren are printed with name and date'))
         add_option('inc_extra_gchild_num', include_extra_gchilds_num)
 
+        include_extra_gchilds_num = NumberOption('Full display of how many extra grandchildren', 1, 1, 9999)
+        include_extra_gchilds_num.set_help(_('How many extra grandchildren are printed with name and date'))
+        add_option('inc_extra_gchild_num', include_extra_gchilds_num)
+
+
+        disp_text_person = TextOption(_("Person\nDisplay Format"),
+                           ["$n",
+                            "%s $b" %_BORN,
+                            "-{%s $d}" %_DIED] )
+        disp_text_person.set_help(_("Display format for the fathers box."))
+        add_option("person_disp", disp_text_person)
 
         # --------------------
         
@@ -364,6 +379,7 @@ class FamilyLinesReport(Report):
         self._inc_extra_child_num = get_value('inc_extra_child_num')
         self._inc_extra_gchild = get_value('inc_extra_gchild')
         self._inc_extra_gchild_num = get_value('inc_extra_gchild_num')
+        self._person_disp = get_value('person_disp')
 
         # the gidlist is annoying for us to use since we always have to convert
         # the GIDs to either Person or to handles, so we may as well convert the
@@ -1021,10 +1037,45 @@ class FamilyLinesReport(Report):
                 border = ""
 
 
-            #subst = SubstKeywords(self._db, self._locale, self._nd,
+            #subst = SubstKeywords(self._db, self._locale, self._name_display,
             #                      None, None)
-            #label = subst.replace_and_clean(self._displayText)
-            
+            #label = subst.replace_and_clean(self._person_disp)
+            #print label
+            #label = lineDelimiter.join(label)
+
+
+            fHandle = person.get_main_parents_family_handle()
+            family = None
+            if fHandle:
+                family = self._db.get_family_from_handle(fHandle)
+
+            # gui = GuiConnect()
+            # calc = gui.calc_lines(self._db)
+            display_repl = [] # self.get_val("replace_list")
+            calc = CalcLines(self._db, display_repl, self._locale, self._name_display)
+            label = calc.calc_lines(person.get_handle(), None, self._person_disp)
+
+            print label
+
+            imgRepl = ''
+            imagePath = 'asd'
+            if imagePath:
+                imgRepl = '<IMG SRC="%s"/>' % imagePath
+            occRepl = ''
+            if len(occupations) > 0:
+                occRepl = 'Beruf%s: %s' % (plural, ', '.join(occupations))
+            xchRepl = self.getExtraChildren(person, lineDelimiter)
+            newLabel = []
+            for index, item in enumerate(label):
+                label[index] = label[index].replace(u'IMAGE', imgRepl)
+                label[index] = label[index].replace(u'OCCUPATION', occRepl)
+                label[index] = label[index].replace(u'MORE_CHILD', xchRepl)
+                if label[index] != '':
+                    newLabel.append(label[index])
+
+            print newLabel
+            label = lineDelimiter.join(newLabel)
+            print self.doc
             # we're done -- add the node
             self.doc.add_node(person.get_gramps_id(),
                  label=label,
@@ -1032,7 +1083,7 @@ class FamilyLinesReport(Report):
                  color=border,
                  style=style,
                  fillcolor=fill,
-                 htmloutput=bUseHtmlOutput)
+                 htmloutput=True)
 
     def writeFamilies(self):
 
