@@ -888,62 +888,6 @@ class FamilyLinesReport(Report):
             if surname in self._surnamecolors:
                 colour = self._surnamecolors[surname]
 
-            # see if we have a birth/death or fallback dates we can use
-            if self._incdates or self._incplaces:
-                bth_event = get_birth_or_fallback(self._db, person)
-                dth_event = get_death_or_fallback(self._db, person)
-            else:
-                bth_event = None
-                dth_event = None
-
-            # output the birth or fallback event
-            birthStr = None
-            if bth_event and self._incdates:
-                if not bth_event.private or self._incprivate:
-                    date = bth_event.get_date_object()
-                    if self._just_years and date.get_year_valid():
-                        birthStr = '%i' % date.get_year()
-                    else:
-                        birthStr = self._get_date(date)
-
-            # get birth place (one of:  city, state, or country) we can use
-            birthplace = None
-            if bth_event and self._incplaces:
-                if not bth_event.private or self._incprivate:
-                    place = self._db.get_place_from_handle(bth_event.get_place_handle())
-                    if place:
-                        location = get_main_location(self._db, place)
-                        if location.get(PlaceType.CITY):
-                            birthplace = location.get(PlaceType.CITY)
-                        elif location.get(PlaceType.STATE):
-                            birthplace = location.get(PlaceType.STATE)
-                        elif location.get(PlaceType.COUNTRY):
-                            birthplace = location.get(PlaceType.COUNTRY)
-
-            # see if we have a deceased date we can use
-            deathStr = None
-            if dth_event and self._incdates:
-                if not dth_event.private or self._incprivate:
-                    date = dth_event.get_date_object()
-                    if self._just_years and date.get_year_valid():
-                        deathStr = '%i' % date.get_year()
-                    else:
-                        deathStr = self._get_date(date)
-
-            # get death place (one of:  city, state, or country) we can use
-            deathplace = None
-            if dth_event and self._incplaces:
-                if not dth_event.private or self._incprivate:
-                    place = self._db.get_place_from_handle(dth_event.get_place_handle())
-                    if place:
-                        location = get_main_location(self._db, place)
-                        if location.get(PlaceType.CITY):
-                            deathplace = location.get(PlaceType.CITY)
-                        elif location.get(PlaceType.STATE):
-                            deathplace = location.get(PlaceType.STATE)
-                        elif location.get(PlaceType.COUNTRY):
-                            deathplace = location.get(PlaceType.COUNTRY)
-
             occupations = self.getOccupations(person)
 
             # see if we have an image to use for this person
@@ -962,9 +906,7 @@ class FamilyLinesReport(Report):
 
             # put the label together and output this person
             label = ""
-            lineDelimiter = '\\n'
-            if bUseHtmlOutput:
-                lineDelimiter = '<BR/>'
+            lineDelimiter = '<BR/>'
 
             # if we have an image, then start an HTML table;
             # remember to close the table afterwards!
@@ -977,44 +919,35 @@ class FamilyLinesReport(Report):
                     label += '</TR><TR>'
                 label += '<TD>'
 
-            # at the very least, the label must have the person's name
-            label += name
-            print name
-            if birthStr or deathStr:
-                label += '%s(' % lineDelimiter
-                if birthStr:
-                    label += '%s' % birthStr
-                label += ' - '
-                if deathStr:
-                    label += '%s' % deathStr
-                label += ')'
-            if birthplace or deathplace:
-                if birthplace == deathplace:
-                    deathplace = None    # no need to print the same name twice
-                label += '%s' % lineDelimiter
-                if birthplace:
-                    label += '%s' % birthplace
-                if birthplace and deathplace:
-                    label += ' / '
-                if deathplace:
-                    label += '%s' % deathplace
 
+
+            fHandle = person.get_main_parents_family_handle()
+            display_repl = [] # self.get_val("replace_list")
+            calc = CalcLines(self._db, display_repl, self._locale, self._name_display)
+            replacedText = calc.calc_lines(person.get_handle(), fHandle, self._person_disp)
+
+            occRepl = ''
             if len(occupations) > 0:
                 plural = ''
                 if len(occupations) > 1:
                     plural = 'e'
-                label += '%s Beruf%s: %s' % (lineDelimiter, plural, ', '.join(occupations))
+                occRepl = 'Beruf%s: %s' % (plural, ', '.join(occupations))
+            xchRepl = self.getExtraChildren(person, lineDelimiter)
+            newLabel = []
+            for index, item in enumerate(replacedText):
+                replacedText[index] = replacedText[index].replace(u'OCCUPATION', occRepl)
+                replacedText[index] = replacedText[index].replace(u'MORE_CHILD', xchRepl)
+                if replacedText[index] != '':
+                    newLabel.append(replacedText[index])
 
-
-            if self._inc_extra_child:
-                label += self.getExtraChildren(person, lineDelimiter)
-
-
-
-
-            # see if we have a table that needs to be terminated
+            label += lineDelimiter.join(newLabel)
             if imagePath:
                 label += '</TD></TR></TABLE>'
+
+
+
+
+
 
             shape   = "box"
             style   = "solid"
@@ -1037,45 +970,6 @@ class FamilyLinesReport(Report):
                 border = ""
 
 
-            #subst = SubstKeywords(self._db, self._locale, self._name_display,
-            #                      None, None)
-            #label = subst.replace_and_clean(self._person_disp)
-            #print label
-            #label = lineDelimiter.join(label)
-
-
-            fHandle = person.get_main_parents_family_handle()
-            family = None
-            if fHandle:
-                family = self._db.get_family_from_handle(fHandle)
-
-            # gui = GuiConnect()
-            # calc = gui.calc_lines(self._db)
-            display_repl = [] # self.get_val("replace_list")
-            calc = CalcLines(self._db, display_repl, self._locale, self._name_display)
-            label = calc.calc_lines(person.get_handle(), None, self._person_disp)
-
-            print label
-
-            imgRepl = ''
-            imagePath = 'asd'
-            if imagePath:
-                imgRepl = '<IMG SRC="%s"/>' % imagePath
-            occRepl = ''
-            if len(occupations) > 0:
-                occRepl = 'Beruf%s: %s' % (plural, ', '.join(occupations))
-            xchRepl = self.getExtraChildren(person, lineDelimiter)
-            newLabel = []
-            for index, item in enumerate(label):
-                label[index] = label[index].replace(u'IMAGE', imgRepl)
-                label[index] = label[index].replace(u'OCCUPATION', occRepl)
-                label[index] = label[index].replace(u'MORE_CHILD', xchRepl)
-                if label[index] != '':
-                    newLabel.append(label[index])
-
-            print newLabel
-            label = lineDelimiter.join(newLabel)
-            print self.doc
             # we're done -- add the node
             self.doc.add_node(person.get_gramps_id(),
                  label=label,
