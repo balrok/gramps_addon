@@ -49,7 +49,7 @@ log = logging.getLogger(".FamilyLines")
 #------------------------------------------------------------------------
 from gramps.gen.const import GRAMPS_LOCALE as glocale
 _ = glocale.translation.gettext
-from gramps.gen.lib import EventRoleType, EventType, Person, PlaceType
+from gramps.gen.lib import EventRoleType, EventType, Person, PlaceType, NameType
 from gramps.gen.utils.file import media_path_full
 from gramps.gui.thumbnails import get_thumbnail_path
 from gramps.gen.plug.report import Report
@@ -390,6 +390,7 @@ class FamilyLinesReport(Report):
                             _('You did not specify anybody'))
         for gid in self._gidlist.split():
             person = self._db.get_person_from_gramps_id(gid)
+            print gid
             if person:
                 #option can be from another family tree, so person can be None
                 self._interest_set.add(person.get_handle())
@@ -496,6 +497,7 @@ class FamilyLinesReport(Report):
             if handle not in self._people:
 
                 person = self._db.get_person_from_handle(handle)
+
 
                 # if this is a private record, and we're not
                 # including private records, then go back to the
@@ -713,6 +715,8 @@ class FamilyLinesReport(Report):
 
                 person = self._db.get_person_from_handle(handle)
 
+                if person.get_gramps_id() == 'I0057':
+                    continue
                 # if this is a private record, and we're not
                 # including private records, then go back to the
                 # top of the while loop to get the next person
@@ -820,7 +824,7 @@ class FamilyLinesReport(Report):
         if len(children) > 0:
             # label += '<div style="text-align:left">'
             # TODO make translatable
-            label += lineDelimiter + 'Mehr Kinder: '+ unicode(len(children))
+            label += 'Mehr Kinder: '+ unicode(len(children))
             if len(children) < self._inc_extra_child_num:
                 for i in children:
                     if i[1]:
@@ -873,7 +877,6 @@ class FamilyLinesReport(Report):
         sorted_people = sorted(self._people, key=personSorter)
         for handle in sorted_people:
             person = self._db.get_person_from_handle(handle)
-            name = self._name_display.display(person)
 
             # figure out what colour to use
             gender = person.get_gender()
@@ -932,22 +935,34 @@ class FamilyLinesReport(Report):
                 if len(occupations) > 1:
                     plural = 'e'
                 occRepl = 'Beruf%s: %s' % (plural, ', '.join(occupations))
-            xchRepl = self.getExtraChildren(person, lineDelimiter)
             newLabel = []
             for index, item in enumerate(replacedText):
-                replacedText[index] = replacedText[index].replace(u'OCCUPATION', occRepl)
-                replacedText[index] = replacedText[index].replace(u'MORE_CHILD', xchRepl)
-                if replacedText[index] != '':
-                    newLabel.append(replacedText[index])
+                if 'NAME' in replacedText[index]:
+                    nameRepl = self._name_display.display(person)
+                    if int(person.get_primary_name().get_type()) != NameType.BIRTH:
+                        # now check if birth name differs from that name
+                        for alt_name in person.get_alternate_names():
+                            if int(alt_name.get_type()) == NameType.BIRTH:
+                                nameRepl += '(geb. '+ alt_name.get_surname() + ')'
+                    replacedText[index] = replacedText[index].replace('NAME', nameRepl)
+                if 'OCCUPATION' in replacedText[index]:
+                    if occRepl == '':
+                        continue
+                    replacedText[index] = replacedText[index].replace('OCCUPATION', occRepl)
+                if 'MORE_CHILD' in replacedText[index]:
+                    xchild = self.getExtraChildren(person, lineDelimiter)
+                    if xchild == '':
+                        continue
+                    xchRepl = ''
+                    #xchRepl += '</TD></TR><TR><TD style="font-size:3px">'
+                    xchRepl += self.getExtraChildren(person, lineDelimiter)
+                    #xchRepl += '</TD></TR><TR><TD>'
+                    replacedText[index] = replacedText[index].replace('MORE_CHILD', xchRepl)
+                newLabel.append(replacedText[index])
 
             label += lineDelimiter.join(newLabel)
             if imagePath:
                 label += '</TD></TR></TABLE>'
-
-
-
-
-
 
             shape   = "box"
             style   = "solid"
@@ -1050,7 +1065,7 @@ class FamilyLinesReport(Report):
             if hasWedding:
                 if label != '':
                     label += '\\n'
-                label += 'oo'
+                label += '&#8734;' # '&#9901;'
             if weddingDate:
                 label += ' %s' % weddingDate
             if weddingPlace:
