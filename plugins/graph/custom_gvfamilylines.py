@@ -845,21 +845,33 @@ class FamilyLinesReport(Report):
                         label += lineDelimiter + i[1]
         return label
 
+    def getDisplayName(self, person, use_html = False):
+        nameRepl = self._name_display.display(person)
+        if int(person.get_primary_name().get_type()) != NameType.BIRTH:
+            nameRepl += ' (geb. '+ self.getBirthSurname(person) + ')'
+        if use_html:
+            call_name = person.get_primary_name().get_call_name()
+            if len(call_name) > 0:
+                nameRepl = nameRepl.replace(call_name, '<B>' + call_name + '</B>')
+        return nameRepl
+
+    def getBirthSurname(self, person):
+        for alt_name in person.get_alternate_names():
+            if int(alt_name.get_type()) == NameType.BIRTH:
+                return alt_name.get_surname()
+        return '?'
 
     def writePeople(self):
-
         self.doc.add_comment('')
-
-        # If we're going to attempt to include images, then use the HTML style 
-        # of .gv file.
-        bUseHtmlOutput = False
-        if self._incimages:
-            bUseHtmlOutput = True
-
         # TODO there could be improvement and is still something wrong (wrong order)
         # also people should be sorted by their marriage - so first marriage, then 2nd marriage
         def personSorter(handle):
             person = self._db.get_person_from_handle(handle)
+
+            #bth_event = get_birth_or_fallback(self._db, person)
+            #if bth_event and not bth_event.private or self._incprivate:
+            #    return bth_event.get_date_object().get_year()
+            #return 1
             fHandle = person.get_main_parents_family_handle()
             if fHandle:
                 family = self._db.get_family_from_handle(fHandle)
@@ -875,6 +887,10 @@ class FamilyLinesReport(Report):
             return 0
 
         sorted_people = sorted(self._people, key=personSorter)
+        for handle in sorted_people:
+            person = self._db.get_person_from_handle(handle)
+            print self.getDisplayName(person), personSorter(handle)
+
         for handle in sorted_people:
             person = self._db.get_person_from_handle(handle)
 
@@ -938,13 +954,7 @@ class FamilyLinesReport(Report):
             newLabel = []
             for index, item in enumerate(replacedText):
                 if 'NAME' in replacedText[index]:
-                    nameRepl = self._name_display.display(person)
-                    if int(person.get_primary_name().get_type()) != NameType.BIRTH:
-                        # now check if birth name differs from that name
-                        for alt_name in person.get_alternate_names():
-                            if int(alt_name.get_type()) == NameType.BIRTH:
-                                nameRepl += '(geb. '+ alt_name.get_surname() + ')'
-                    replacedText[index] = replacedText[index].replace('NAME', nameRepl)
+                    replacedText[index] = replacedText[index].replace('NAME', self.getDisplayName(person, True))
                 if 'OCCUPATION' in replacedText[index]:
                     if occRepl == '':
                         continue
@@ -1042,12 +1052,14 @@ class FamilyLinesReport(Report):
                 child_count = 0
                 # to make sure only non-private people are counted and to save people who aren't displayed
                 notDisplayedPeople = []
+                allChild = ''
                 for childRef in family.get_child_ref_list():
                     person = self._db.get_person_from_handle(childRef.ref)
                     if (person.private and self._incprivate) or not person.private:
                         child_count += 1
                         if childRef.ref not in self._people:
                             notDisplayedPeople.append(person)
+                        allChild += "\n %d. %s" % (child_count, self.getNameAndBirthDeath(person))
                 # child_count = len(family.get_child_ref_list())
                 if child_count >= 1:
                     # translators: leave all/any {...} untranslated
@@ -1055,10 +1067,12 @@ class FamilyLinesReport(Report):
                                            "{number_of} children", child_count
                                           ).format(number_of=child_count)
                     if len(notDisplayedPeople) > 0:
-                        for child in notDisplayedPeople:
-                            childLabel = self.getNameAndBirthDeath(child)
-                            if childLabel:
-                                childrenStr += "\n"+childLabel
+                        childrenStr += allChild
+                        #for childRef in family.get_child_ref_list():
+                        #    person = self._db.get_person_from_handle(childRef.ref)
+                        #    childLabel = self.getNameAndBirthDeath(person)
+                        #    if childLabel:
+                        #        childrenStr += "\n"+childLabel
 
             label = ''
 
