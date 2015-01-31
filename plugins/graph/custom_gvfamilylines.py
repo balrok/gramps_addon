@@ -852,7 +852,7 @@ class FamilyLinesReport(Report):
         if use_html:
             call_name = person.get_primary_name().get_call_name()
             if len(call_name) > 0:
-                nameRepl = nameRepl.replace(call_name, '<B>' + call_name + '</B>')
+                nameRepl = nameRepl.replace(call_name, '<U>' + call_name + '</U>')
         return nameRepl
 
     def getBirthSurname(self, person):
