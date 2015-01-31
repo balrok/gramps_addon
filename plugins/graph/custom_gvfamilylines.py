@@ -1005,7 +1005,6 @@ class FamilyLinesReport(Report):
                  htmloutput=True)
 
     def writeFamilies(self):
-
         self.doc.add_comment('')
         ngettext = self._locale.translation.ngettext # to see "nearby" comments
 
