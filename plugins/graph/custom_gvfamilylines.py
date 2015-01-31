@@ -662,7 +662,7 @@ class FamilyLinesReport(Report):
             bKeepThisPerson = False
             for personOfInterestHandle in self._interest_set:
                 personOfInterest = self._db.get_person_from_handle(personOfInterestHandle)
-                surnameOfInterest = personOfInterest.get_primary_name().get_surname().encode('iso-8859-1','xmlcharrefreplace')
+                surnameOfInterest = self.getBirthSurname(personOfInterest) # personOfInterest.get_primary_name().get_surname().encode('iso-8859-1','xmlcharrefreplace')
                 if surnameOfInterest == surname or surnameOfInterest == spouse_surname:
                     bKeepThisPerson = True
                     break
