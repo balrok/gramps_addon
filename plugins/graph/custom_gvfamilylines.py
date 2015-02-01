@@ -297,6 +297,11 @@ class FamilyLinesOptions(MenuReportOptions):
         disp_text_person.set_help(_("Display format for the fathers box."))
         add_option("person_disp", disp_text_person)
 
+        filter_ancestor_surname = BooleanOption(_('Filter ancestor by surname'), True)
+        filter_ancestor_surname.set_help(_("Only include ancestor with same (birth) surname of persons of interest"))
+        add_option("filter_ancestor_surname", filter_ancestor_surname)
+
+
         # --------------------
         
         self.limit_changed()
@@ -380,6 +385,7 @@ class FamilyLinesReport(Report):
         self._inc_extra_gchild = get_value('inc_extra_gchild')
         self._inc_extra_gchild_num = get_value('inc_extra_gchild_num')
         self._person_disp = get_value('person_disp')
+        self._filter_ancestor_surname = get_value('filter_ancestor_surname')
 
         # the gidlist is annoying for us to use since we always have to convert
         # the GIDs to either Person or to handles, so we may as well convert the
@@ -659,15 +665,18 @@ class FamilyLinesReport(Report):
 
             # if the surname (or the spouse's surname) matches a person
             # of interest, then we automatically keep this person
-            bKeepThisPerson = False
-            for personOfInterestHandle in self._interest_set:
-                personOfInterest = self._db.get_person_from_handle(personOfInterestHandle)
-                surnameOfInterest = self.getBirthSurname(personOfInterest) # personOfInterest.get_primary_name().get_surname().encode('iso-8859-1','xmlcharrefreplace')
-                if surnameOfInterest == surname or surnameOfInterest == spouse_surname:
-                    bKeepThisPerson = True
-                    break
-
-            if bKeepThisPerson:
+            if self._filter_ancestor_surname:
+                bKeepThisPerson = False
+                for personOfInterestHandle in self._interest_set:
+                    personOfInterest = self._db.get_person_from_handle(personOfInterestHandle)
+                    surnameOfInterest = self.getBirthSurname(personOfInterest)
+                    #surnameOfInterest = personOfInterest.get_primary_name().get_surname().encode('iso-8859-1','xmlcharrefreplace')
+                    if surnameOfInterest == surname or surnameOfInterest == spouse_surname:
+                        bKeepThisPerson = True
+                        break
+                if bKeepThisPerson:
+                    continue
+            else:
                 continue
 
             # if we have a special colour to use for this person,
@@ -856,6 +865,8 @@ class FamilyLinesReport(Report):
         return nameRepl
 
     def getBirthSurname(self, person):
+        if int(person.get_primary_name().get_type()) == NameType.BIRTH:
+            return person.get_primary_name().get_surname()
         for alt_name in person.get_alternate_names():
             if int(alt_name.get_type()) == NameType.BIRTH:
                 return alt_name.get_surname()
