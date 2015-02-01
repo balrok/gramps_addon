@@ -51,7 +51,7 @@ from gramps.gen.const import GRAMPS_LOCALE as glocale
 _ = glocale.translation.gettext
 from gramps.gen.lib import EventRoleType, EventType, Person, PlaceType, NameType
 from gramps.gen.utils.file import media_path_full
-from gramps.gui.thumbnails import get_thumbnail_path
+from gramps.gui.thumbnails import get_thumbnail_path, SIZE_LARGE
 from gramps.gen.plug.report import Report
 from gramps.gen.plug.report import utils as ReportUtils
 from gramps.gen.plug.report import MenuReportOptions
@@ -932,7 +932,8 @@ class FamilyLinesReport(Report):
                         imagePath = get_thumbnail_path(
                                         media_path_full(self._db, 
                                                         media.get_path()),
-                                        rectangle=mediaList[0].get_rectangle())
+                                        rectangle=mediaList[0].get_rectangle(),
+                                        size=SIZE_LARGE)
 
             # put the label together and output this person
             label = ""
